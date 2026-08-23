@@ -14,7 +14,7 @@ import routerProvider, {
   UnsavedChangesNotifier,
   DocumentTitleHandler,
 } from "@refinedev/react-router";
-import { dataProvider } from "./providers/data";
+
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { ForgotPassword } from "./pages/forgot-password";
@@ -30,6 +30,7 @@ import {BookOpen, Home} from "lucide-react";
 import List from "@/pages/subjects/list.tsx";
 import SubjectsList from "@/pages/subjects/list.tsx";
 import SubjectsCreate from "@/pages/subjects/create.tsx";
+import {dataProviders} from "@/providers/data.ts";
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
         <ThemeProvider>
           <DevtoolsProvider>
             <Refine
-              dataProvider={dataProvider}
+              dataProvider={dataProviders}
               notificationProvider={useNotificationProvider()}
               routerProvider={routerProvider}
               options={{
@@ -51,7 +52,7 @@ function App() {
                   name: 'dashboard', list: '/', meta: { label: 'Home', icon: <Home/> }
                 },
                 {
-                  name: 'subjects', list: '/subjects', meta: { label: 'Subjects', icon: <BookOpen/> }
+                  name: 'subjects', list: '/subjects', create: '/subjects/create', meta: { label: 'Subjects', icon: <BookOpen/> }
                 }
               ]}
             >
